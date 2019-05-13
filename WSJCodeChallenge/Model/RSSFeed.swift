@@ -11,6 +11,7 @@ import Foundation
 enum RSSFeed: Int {
     case world = 0, business, markets, tech, opinion, lifestyle
     
+    ///WARNING: Add new path along with new case in proper order!
     private static let paths = ["RSSWorldNews.xml", "WSJcomUSBusiness.xml", "RSSMarketsMain.xml", "RSSWSJD.xml", "RSSOpinion.xml", "RSSLifestyle.xml"]
     
     var htmlPath: String {

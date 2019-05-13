@@ -18,6 +18,8 @@ struct RSSStory {
         self.title = title
         self.description = description
         self.storyUrl = storyUrl
+        
+        //Since the date was already formatted I decided to just operate on the string. Date formatters are annoying but I would use one if we were going to be adding other feeds or wanted a specific date format. I really enjoy using chained string methods.
         self.date = date.split(separator: " ").dropLast().joined(separator: " ")
     }
 }

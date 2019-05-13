@@ -10,11 +10,13 @@ import UIKit
 
 class RSSViewController: UIViewController {
     
+    //MARK: Properties and Outlets
     @IBOutlet weak var feedSelector: UISegmentedControl!
     @IBOutlet weak var storyTable: UITableView!
     
     var stories: [RSSStory] = []
     
+    //MARK: Overrides and Actions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,7 @@ class RSSViewController: UIViewController {
         feedSelectorChangedValue()
     }
     
+    //MARK: - Helper Functions
     func fetchStories() {
         let feedType = RSSFeed(rawValue: feedSelector.selectedSegmentIndex)!
         RSSWebClient.getStories(for: feedType, completion: { stories, error in 
@@ -106,6 +109,7 @@ class RSSViewController: UIViewController {
 
 extension RSSViewController: UITableViewDelegate, UITableViewDataSource {
     
+    //MARK: TableView Operations
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stories.count
     }
@@ -116,12 +120,11 @@ extension RSSViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setup(for: story)
         return cell
     }
-
     
 }
 
 extension RSSViewController: UIGestureRecognizerDelegate {
-    
+    //MARK: Gesture Recognizer Operations
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
